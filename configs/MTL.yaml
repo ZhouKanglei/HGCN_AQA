@@ -1,0 +1,33 @@
+# basic setting
+bs_train: 4
+bs_test: 4
+workers: 16
+max_epoch: 200
+
+# model setting
+backbone: 'models.I3D_backbone'
+backbone_args:
+  I3D_class: 400
+  I3D_ckpt_path: './weights/model_rgb.pth'
+
+model_args:
+  in_channels: 1024
+  out_channels: 1
+
+# dataset setting
+data_root: '/home/zkl/Documents/Data/AQA/Sequence/MTL-AQA/new'
+label_path: '/home/zkl/Documents/Data/AQA/Sequence/MTL-AQA/info/final_annotations_dict_with_dive_number.pkl'
+train_split: '/home/zkl/Documents/Data/AQA/Sequence/MTL-AQA/info/train_split_0.pkl'
+test_split: '/home/zkl/Documents/Data/AQA/Sequence/MTL-AQA/info/test_split_0.pkl'
+
+usingDD: True
+frame_length: 103
+temporal_shift_min: -3
+temporal_shift_max: 3
+
+# optimizer setting
+optimizer: 'Adam'
+weight_decay: 0.00001
+base_lr: 0.0001
+lr_factor: 0
+super_loss: False

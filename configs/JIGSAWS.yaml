@@ -1,0 +1,32 @@
+# basic setting
+bs_train: 4
+bs_test: 4
+workers: 16
+max_epoch: 200
+
+# model setting
+backbone: 'models.I3D_backbone'
+backbone_args:
+  I3D_class: 400
+  I3D_ckpt_path: './weights/model_rgb.pth'
+
+model_args:
+  in_channels: 1024
+  out_channels: 1
+
+# dataset setting
+data_root: '/home/zkl/Documents/Data/AQA/Sequence/JIGSAWS'
+label_path: '/home/zkl/Documents/Data/AQA/Sequence/JIGSAWS/info/label.pkl'
+split_path: '/home/zkl/Documents/Data/AQA/Sequence/JIGSAWS/info/splits.pkl'
+
+usingDD: False
+frame_length: 160
+score_range: 100
+fold: 1
+
+# optimizer setting
+optimizer: 'Adam'
+weight_decay: 0.00001
+base_lr: 0.0001
+lr_factor: 0
+super_loss: False
