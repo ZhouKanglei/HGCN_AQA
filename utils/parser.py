@@ -40,6 +40,7 @@ class Parser(object):
         parser.add_argument('--fold', type=int, default=None, help='cross-validation folds')
         parser.add_argument('--bs_train', type=int, default=None, help='batchsize of train')
         parser.add_argument('--bs_test', type=int, default=None, help='batchsize of test')
+        parser.add_argument('--num_groups', type=int, default=4, help='number of group size')
 
         self.args = parser.parse_args()
 
@@ -99,3 +100,6 @@ class Parser(object):
             print(f'----------------------------\n'
                   f'Resume yaml from {cfg_path}.\n'
                   f'----------------------------\n')
+
+
+        self.args.model_args['num_groups'] = self.args.num_groups

@@ -408,22 +408,14 @@ class Processor(object):
         process = tqdm(range(len(loader)), dynamic_ncols=True)
         with torch.no_grad():
             for idx, (data, index) in enumerate(loader):
-
-                if idx in [14 // 4, 224 // 4, 332 // 4, 340 // 4]:
-                    print(index)
-                else:
-                    continue
-
                 # data
                 true_scores.extend(data['final_score'].numpy().reshape((-1, 1)))
                 video = data['video'].float().cuda(self.args.output_device)
 
-                print(data['final_score'].numpy().reshape((-1, 1)))
-
                 # forward
                 feature = self.base_model(video)
                 I3D_features.extend(feature.cpu().detach().numpy())
-                pred, mu, std, shot, scene, v = self.regressor(feature, self.args.phase)
+                pred, mu, std, shot, scene, v, scores = self.regressor(feature, self.args.phase)
                 shots.extend(shot.cpu().detach().numpy())
                 scenes.extend(scene.cpu().detach().numpy())
                 vs.extend(v.cpu().detach().numpy())
@@ -448,8 +440,6 @@ class Processor(object):
             os.makedirs(os.path.dirname(fiile_name), exist_ok=True)
             np.savez(fiile_name, I3D=np.array(I3D_features), y=np.array(true_scores), shot=np.array(shots),
                      scene=np.array(scenes), v=np.array(vs), diff=np.array(diffs))
-
-            print(np.array(shots).shape, np.array(scenes).shape)
 
             # analysis on results
             rho, p, L2, RL2 = self.compute_matric(pred_scores, true_scores)

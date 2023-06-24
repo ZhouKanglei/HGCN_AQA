@@ -1,7 +1,6 @@
 import torch.nn as nn
 import torch
 from models.i3d import I3D
-from models.i3d_backbone import InceptionI3d
 
 
 class I3D_backbone(nn.Module):
