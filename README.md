@@ -1,12 +1,10 @@
 # HGCN
 
-This is the implementation for *Hierarchical Graph Convolutional Networks for Action Quality Assessment*, which has been accepted by IEEE TCSVT. 
-
-The framework overview is as follows:
+This is the implementation for *Hierarchical Graph Convolutional Networks for Action Quality Assessment*, which has been accepted by IEEE TCSVT.  The framework overview is as follows:
 
 ![](./imgs/overview.png)
 
-<center>We propose a hierarchical graph convolutional network (HGCN) to address intra-clip confusion and inter-clip incoherence. First, semantic information confusion is corrected through clip refinement, generating the ‘shot’ as the basic action unit. We then construct a scene graph by combining several consecutive shots into meaningful scenes to capture local dynamics. These scenes can be viewed as different procedures of a given action, providing valuable assessment cues. The video-level representation is finally extracted via sequential action aggregation among scenes to regress the predicted score distribution, enhancing discriminative features and improving assessment performance.</center>
+<center>We propose a hierarchical graph convolutional network (HGCN) that corrects semantic information confusion, constructs meaningful scenes from consecutive shots, and performs sequential action aggregation to enhance discriminative features and improve assessment performance in action quality assessment.</center>
 
 [Paper address](https://doi.org/https://doi.org/10.1109/TCSVT.2023.3281413) | [Project page](http://hubertshum.com/pbl_tcsvt2023aqa.htm)
 
